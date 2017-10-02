@@ -26,6 +26,10 @@ button img:hover {
   filter: grayscale(0%);
 }
 
+#color-palette {
+  margin-left: 40px;
+}
+
 /*button:focus > #button-icon {
   filter: grayscale(0%);
 }*/

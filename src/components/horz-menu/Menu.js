@@ -33,6 +33,7 @@ class Menu extends Component {
     render() {
         return (
             <div id="top-bar">
+              <div id="basic-buttons">
                 <button onClick={() => this.handleToolSelect("selectTool")}>
                     <img src="./assets/001-cursor.svg" alt="select" id="button-icon" />
                 </button>
@@ -45,7 +46,10 @@ class Menu extends Component {
                 <button onClick={this.handleRedoClick}>
                     <img src="./assets/003-redo.svg" alt="redo" id="button-icon" />
                 </button>
-                <ColorPicker></ColorPicker>
+              </div>
+                <div id="color-palette">
+                  <ColorPicker></ColorPicker>
+                </div>
             </div>
         );
     }
