@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './menu.css';
+import { ColorPicker } from '.';
 
 class Menu extends Component {
     static propTypes = {
@@ -44,6 +45,7 @@ class Menu extends Component {
                 <button onClick={this.handleRedoClick}>
                     <img src="./assets/003-redo.svg" alt="redo" id="button-icon" />
                 </button>
+                <ColorPicker></ColorPicker>
             </div>
         );
     }
