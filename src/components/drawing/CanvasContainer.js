@@ -6,13 +6,16 @@ import {
     canvasDragStop,
     shapeDragStart,
     shapeDrag,
-    shapeDragStop
+    shapeDragStop,
+    handleDragStart,
+    handleDrag,
+    handleDragStop
 } from './../../actions/canvas';
 
-const mapStateToProps = ({drawingState}) => {
-    const { drawing, zIndexedShapeIds, selectionBoxes } = drawingState;
-    const shapes = zIndexedShapeIds.map((id) => {
-        return drawing[id];
+const mapStateToProps = ({ drawingState }) => {
+    const { selectionBoxes } = drawingState;
+    const shapes = drawingState.shapes.allIds.map((id) => {
+        return drawingState.shapes.byId[id];
     });
     Object.keys(selectionBoxes).map((id) => {
         shapes.push(selectionBoxes[id]);
@@ -43,17 +46,14 @@ const mapDispatchToProps = (dispatch) => {
         onShapeDragStop: (shapeId, draggableData) => {
             dispatch(shapeDragStop(shapeId));
         },
-        onResizeHandleDragStart: (shapeId, draggableData) => {
-            console.log(shapeId, draggableData);
-            console.log("start handle drag");
+        onHandleDragStart: (shapeId, handleIndex, draggableData) => {
+            dispatch(handleDragStart(shapeId, handleIndex, draggableData));
         },
-        onResizeHandleDrag: (shapeId, draggableData) => {
-            console.log(shapeId, draggableData);
-            console.log("handle drag");
+        onHandleDrag: (shapeId, handleIndex, draggableData) => {
+            dispatch(handleDrag(shapeId, handleIndex, draggableData));
         },
-        onResizeHandleDragStop: (shapeId, draggableData) => {
-            console.log(shapeId, draggableData);
-            console.log("stop handle drag");
+        onHandleDragStop: (shapeId, handleIndex, draggableData) => {
+            dispatch(handleDragStop(shapeId, handleIndex, draggableData));
         }
     };
 };
