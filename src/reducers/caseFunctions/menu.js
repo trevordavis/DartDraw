@@ -1,5 +1,6 @@
 import jsondiffpatch from 'jsondiffpatch';
 import { generateSelectionBoxes } from '../utilities/selection';
+import { groupShapes } from '../utilities/shapes';
 
 export function keyDown(stateCopy, action) {
     const { keyCode } = action.payload;
@@ -48,5 +49,18 @@ export function redoClick(stateCopy, action) {
 
 export function selectTool(stateCopy, action) {
     stateCopy.toolType = action.payload.toolType;
+    return stateCopy;
+}
+
+export function groupClick(stateCopy, action) {
+    const group = groupShapes(stateCopy.selected, stateCopy.shapes);
+    console.log(group);
+    stateCopy.selected.map((id) => {
+        const i = stateCopy.shapes.allIds.indexOf(id);
+        stateCopy.shapes.allIds.splice(i, 1);
+    });
+    stateCopy.shapes.allIds.push(group.id);
+    stateCopy.shapes.byId[group.id] = group;
+    stateCopy.selected = [group.id];
     return stateCopy;
 }
