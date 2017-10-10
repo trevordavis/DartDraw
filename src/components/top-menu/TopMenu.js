@@ -15,7 +15,7 @@ class TopMenu extends Component {
 
         this.handleUndoClick = this.handleUndoClick.bind(this);
         this.handleRedoClick = this.handleRedoClick.bind(this);
-        this.handleColorSelect = this.handleColorSelect.bind(this);
+        this.handleChangeComplete = this.handleChangeComplete.bind(this);
     }
 
     handleUndoClick() {
@@ -26,8 +26,8 @@ class TopMenu extends Component {
         this.props.onRedoClick();
     }
 
-    handleColorSelect(color) {
-        this.props.onColorSelect(color);
+    handleChangeComplete(color, event) {
+        this.props.onColorSelect(color.rgb);
     }
 
     render() {
@@ -40,7 +40,7 @@ class TopMenu extends Component {
                   <img src="./assets/003-redo.svg" alt="redo" id="button-icon" />
               </button>
               <div id="color-palette">
-                <CirclePicker circleSize={20} circleSpacing={5} width='450px'/>
+                <CirclePicker onChangeComplete={ this.handleChangeComplete } circleSize={20} circleSpacing={5} width='450px'/>
               </div>
             </div>
         );
