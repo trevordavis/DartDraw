@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './menu.css';
+import './top-menu.css';
 import { CirclePicker } from 'react-color';
 
 class ColorPicker extends Component {

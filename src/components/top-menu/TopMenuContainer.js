@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Menu from './Menu';
+import TopMenu from './TopMenu';
 import {
     undoClick,
     redoClick,
@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => {
         onRedoClick: () => {
             dispatch(redoClick());
         },
-        onToolSelect: (toolType) => {
+        onToolSelect: (toolType) => { // replace with onColorSelect
             dispatch(selectTool(toolType));
         }
     };
@@ -23,4 +23,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     null,
     mapDispatchToProps
-)(Menu);
+)(TopMenu);

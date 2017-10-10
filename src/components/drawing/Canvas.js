@@ -160,7 +160,7 @@ class Canvas extends Component {
                     onDrag={this.handleDrag}
                     onStop={this.handleDragStop}
                 >
-                    <svg className="Canvas" height="900" width="1200">
+                    <svg className="Canvas" height="95vh" width="1200">
                         {this.renderDrawing()}
                     </svg>
                 </Draggable>
