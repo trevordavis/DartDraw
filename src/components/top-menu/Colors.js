@@ -9,12 +9,11 @@ class ColorPicker extends Component {
 
     constructor(props) {
         super(props);
-
     }
 
     render() {
         return (
-            <CirclePicker circleSize="20" circleSpacing="5" width="450px"/>
+            <CirclePicker/>
         );
     }
 }

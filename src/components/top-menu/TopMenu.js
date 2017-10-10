@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './top-menu.css';
-import { ColorPicker } from '.';
+import { CirclePicker } from 'react-color';
 
 class TopMenu extends Component {
     static propTypes = {
@@ -40,7 +40,7 @@ class TopMenu extends Component {
                   <img src="./assets/003-redo.svg" alt="redo" id="button-icon" />
               </button>
               <div id="color-palette">
-                <ColorPicker></ColorPicker>
+                <CirclePicker circleSize={20} circleSpacing={5} width='450px'/>
               </div>
             </div>
         );
