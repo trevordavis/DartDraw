@@ -39,12 +39,11 @@ class App extends Component {
                 onKeyUp={this.handleKeyUp}
                 tabIndex={-1}
             >
-            <TopMenuContainer />
-            <div className="mainBody">
-              <LeftMenuContainer />
-              <CanvasContainer />
-            </div>
-
+                <TopMenuContainer />
+                <div className="mainBody">
+                    <LeftMenuContainer />
+                    <CanvasContainer />
+                </div>
             </div>
         );
     }

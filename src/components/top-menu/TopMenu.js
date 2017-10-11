@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './top-menu.css';
-import { ColorPicker } from '.';
+import { CirclePicker } from 'react-color';
 
 class TopMenu extends Component {
     static propTypes = {
@@ -15,7 +15,7 @@ class TopMenu extends Component {
 
         this.handleUndoClick = this.handleUndoClick.bind(this);
         this.handleRedoClick = this.handleRedoClick.bind(this);
-        this.handleColorSelect = this.handleColorSelect.bind(this);
+        this.handleChangeComplete = this.handleChangeComplete.bind(this);
     }
 
     handleUndoClick() {
@@ -26,22 +26,22 @@ class TopMenu extends Component {
         this.props.onRedoClick();
     }
 
-    handleColorSelect(color) {
-        this.props.onColorSelect(color);
+    handleChangeComplete(color, event) {
+        this.props.onColorSelect(color.rgb);
     }
 
     render() {
         return (
             <div id="top-bar">
-              <button onClick={this.handleUndoClick}>
-                  <img src="./assets/004-undo.svg" alt="undo" id="button-icon" />
-              </button>
-              <button onClick={this.handleRedoClick}>
-                  <img src="./assets/003-redo.svg" alt="redo" id="button-icon" />
-              </button>
-              <div id="color-palette">
-                <ColorPicker></ColorPicker>
-              </div>
+                <button onClick={this.handleUndoClick}>
+                    <img src="./assets/004-undo.svg" alt="undo" id="button-icon" />
+                </button>
+                <button onClick={this.handleRedoClick}>
+                    <img src="./assets/003-redo.svg" alt="redo" id="button-icon" />
+                </button>
+                <div id="color-palette">
+                    <CirclePicker onChangeComplete={this.handleChangeComplete} circleSize={20} circleSpacing={5} width='450px' />
+                </div>
             </div>
         );
     }

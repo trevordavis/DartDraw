@@ -125,10 +125,7 @@ class Canvas extends Component {
                             onDrag={this.handleShapeDrag}
                             onDragStop={this.handleShapeDragStop}
                             onClick={this.handleShapeClick}
-                            width={shape.width}
-                            height={shape.height}
-                            x={shape.x}
-                            y={shape.y}
+                            {...shape}
                         />
                     );
                 case 'selectionBox':

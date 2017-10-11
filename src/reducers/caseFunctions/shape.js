@@ -1,4 +1,4 @@
-import { addShape, removeShape, resizeShape, moveShape } from '../utilities/shapes';
+import { addShape, removeShape, resizeShape, moveShape, fillShape } from '../utilities/shapes';
 import { selectShape, generateSelectionBoxes, updateSelectionBoxes } from '../utilities/selection';
 
 export function click(stateCopy, action, root) {
@@ -47,7 +47,7 @@ export function drag(stateCopy, action, root) {
         stateCopy.lastSavedShapes = root.drawingState.shapes;
         switch (root.menuState.toolType) {
             case "rectangleTool":
-                stateCopy.shapes = addShape(stateCopy.shapes, action);
+                stateCopy.shapes = addShape(stateCopy.shapes, action, root.menuState.color);
                 const shapeIds = stateCopy.shapes.allIds;
                 const addedShapeId = shapeIds[shapeIds.length - 1];
                 stateCopy.selected = selectShape(stateCopy.selected, addedShapeId);
@@ -119,5 +119,11 @@ export function handleDragStop(stateCopy, action, root) {
             break;
     }
     stateCopy.editInProgress = false;
+    return stateCopy;
+}
+
+export function setColor(stateCopy, action, root) {
+    stateCopy.lastSavedShapes = root.drawingState.shapes;
+    stateCopy.shapes = fillShape(stateCopy.shapes, stateCopy.selected, action);
     return stateCopy;
 }
