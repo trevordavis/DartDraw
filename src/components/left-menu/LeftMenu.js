@@ -5,8 +5,7 @@ import './left-menu.css';
 class LeftMenu extends Component {
     static propTypes = {
         onToolSelect: PropTypes.func,
-        onGroupClick: PropTypes.func,
-        onToolSelect: PropTypes.func
+        onGroupClick: PropTypes.func
     };
 
     constructor(props) {
