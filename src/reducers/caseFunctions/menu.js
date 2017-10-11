@@ -52,7 +52,6 @@ export function selectTool(stateCopy, action) {
     return stateCopy;
 }
 
-<<<<<<< HEAD
 export function groupClick(stateCopy, action) {
     const group = groupShapes(stateCopy.selected, stateCopy.shapes);
     console.log(group);
@@ -63,9 +62,10 @@ export function groupClick(stateCopy, action) {
     stateCopy.shapes.allIds.push(group.id);
     stateCopy.shapes.byId[group.id] = group;
     stateCopy.selected = [group.id];
-=======
+    return stateCopy;
+}
+
 export function selectColor(stateCopy, action) {
     stateCopy.color = action.payload.color;
->>>>>>> 0d1a61659c6619431402820d30d1ce090d842e87
     return stateCopy;
 }

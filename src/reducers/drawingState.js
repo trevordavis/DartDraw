@@ -54,13 +54,11 @@ function drawingState(state = initialState, action, root) {
         case canvasActions.HANDLE_DRAG_STOP:
             updatedState = shape.handleDragStop(stateCopy, action, root);
             break;
-<<<<<<< HEAD
         case menuActions.GROUP_CLICK:
             updatedState = menu.groupClick(stateCopy, action, root);
-=======
+            break;
         case menuActions.SELECT_COLOR:
             updatedState = shape.setColor(stateCopy, action, root);
->>>>>>> 0d1a61659c6619431402820d30d1ce090d842e87
             break;
         case menuActions.UNDO_CLICK:
             updatedState = menu.undoClick(stateCopy, action, root);
