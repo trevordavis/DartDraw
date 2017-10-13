@@ -48,36 +48,30 @@ class Rectangle extends Component {
     }
 
     render() {
-        const { id, width, height, x, y, stroke, strokeWidth, fill } = this.props;
-        let renderX = x;
-        let renderWidth = Math.abs(width);
-        if (width < 0) {
-            renderX = x - renderWidth;
+        const props = Object.assign({}, this.props);
+        props.width = Math.abs(props.width);
+        if (this.props.width < 0) {
+            props.x = props.x - props.width;
         }
-        let renderY = y;
-        let renderHeight = Math.abs(height);
-        if (height < 0) {
-            renderY = y - renderHeight;
+        props.height = Math.abs(props.height);
+        if (this.props.height < 0) {
+            props.y = props.y - props.height;
         }
-        const rectProps = {
-            x: renderX,
-            y: renderY,
-            width: renderWidth,
-            height: renderHeight,
-            stroke,
-            strokeWidth,
-            fill
-        };
+        delete props['id'];
+        delete props['onDragStart'];
+        delete props['onDrag'];
+        delete props['onDragStop'];
+        delete props['onClick'];
 
         return (
             <Shape
-                id={id}
+                id={this.props.id}
                 onDragStart={this.handleDragStart}
                 onDrag={this.handleDrag}
                 onDragStop={this.handleDragStop}
                 onClick={this.handleClick}
             >
-                <rect {...rectProps} />
+                <rect {...props} />
             </Shape>
         );
     }
