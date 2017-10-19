@@ -54,7 +54,7 @@ export function zoomIn(stateCopy, action) {
 }
 
 export function zoomOut(stateCopy, action) {
-    const scale = 0.5;  // zoom out by factor of 2
+    const scale = 0.5; // zoom out by factor of 2
     stateCopy.canvasTransformationMatrix = zoom(stateCopy, scale);
     return stateCopy;
 }
@@ -63,7 +63,7 @@ export function zoom(stateCopy, scale) {
     const m = stateCopy.canvasTransformationMatrix;
     const len = m.length;
     for (let i = 0; i < len; i++) {
-      m[i] *= scale;
+        m[i] *= scale;
     }
     m[4] += (1 - scale) * stateCopy.canvasWidth / 2;
     m[5] += (1 - scale) * stateCopy.canvasHeight / 2;

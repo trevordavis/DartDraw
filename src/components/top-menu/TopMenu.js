@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './top-menu.css';
 import { CirclePicker } from 'react-color';
+const fs = window.require('fs');
 
 const currentPalette = ["#ffffff", "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548"];
 
@@ -40,7 +41,11 @@ class TopMenu extends Component {
     }
 
     handleGroupClick() {
-        this.props.onGroupClick();
+        try {
+            fs.writeFileSync('./myfile.txt', 'hello', 'utf-8');
+        } catch (e) {
+            alert('Failed to save the file !');
+        }
     }
 
     handleBringToFront() {
